@@ -1,14 +1,14 @@
 Fan Porter 0.7.5
 Creatore: Zephiro
 
-L'uso è gratuito. Chi usa, modifica o condivide Fan Porter cita Zephiro come creatore.
+L'uso è gratuito. Chi usa, modifica o condivide Fan Porter mi cita come creatore. Sono Zephiro.
 
-Fan Porter non è il motore sulla Switch. Quel motore è rgss-switch 0.2.4 di randygil, GPL-2.0+, e resta sotto la sua licenza (LICENZA-MOTORE.txt). I fan game non sono inclusi e restano dei loro autori. Fan Porter non è di Nintendo né di The Pokémon Company.
+Fan Porter non è il motore sulla Switch. Quel motore è rgss-switch 0.2.4 di randygil, GPL-2.0+, e resta sotto la sua licenza (LICENZA-MOTORE.txt). I fan game non sono inclusi e restano dei loro autori. Non sono di Nintendo né di The Pokémon Company.
 
 Non c'è garanzia. Se un gioco non parte, da qui non è dovuto nulla.
 
 ---
 
-Use is free. Anyone who uses, modifies, or shares Fan Porter credits Zephiro as the creator.
+Use is free. If you use, modify, or share Fan Porter, credit me as the creator. I am Zephiro.
 
 The Switch engine is rgss-switch 0.2.4 by randygil, GPL-2.0+, and stays under that license. The fan games are not included. There is no warranty.
