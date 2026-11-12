@@ -1,13 +1,13 @@
-"""Aggiornamento del programma da una cartella pubblica di Google Drive.
+"""Aggiornamento del programma.
 
 Accanto ad app.py:
-  versione.txt       numero di build installato, per esempio 202610271630
-  aggiornamento.txt  link di condivisione di fdp-aggiornamento.zip su Drive
+  versione.txt       numero di build installato, per esempio 202611122300
+  aggiornamento.txt  link di fdp-aggiornamento.zip (release GitHub o Drive)
 
-Il pacchetto è un solo zip con dentro il suo versione.txt. Su Drive si sostituisce
-con "Gestisci versioni", così il link non cambia. Contiene solo i file del
-programma: i .py, runtime/ e assets/.
-Il motore, Python, i giochi e le impostazioni non si toccano.
+Il pacchetto è uno zip con dentro il suo versione.txt. Contiene i file del
+programma: i .py, runtime/, assets/ e profili/. Python, il motore, i giochi
+e le impostazioni non si toccano. Lo zip intero per chi scarica la prima volta
+è un altro file, sulla stessa release.
 """
 
 from __future__ import annotations
@@ -29,8 +29,13 @@ SOURCE_FILE = "aggiornamento.txt"
 MANIFEST_NAME = "fdp-versione.json"
 PACKAGE_NAME = "fdp-aggiornamento.zip"
 BACKUP_DIR = "aggiornamento-precedente"
-TOP_FILES = ("app.py", "ui.py", "i18n.py", "engine.py", "splash.py", "nsp.py", "icona.py", "updater.py", BUILD_FILE)
-TOP_DIRS = ("runtime", "assets")
+TOP_FILES = (
+    "app.py", "ui.py", "i18n.py", "engine.py", "splash.py", "nsp.py", "icona.py",
+    "updater.py", BUILD_FILE, "Fan D Porter.exe", "LEGGIMI.txt", "README.md",
+    "LICENZA.txt", "LICENZA-MOTORE.txt", "LICENZE-MOTORE.md", "Se non parte.bat",
+    "fan-d-porter.ico", "fan-porter.ico", "fan-porter.png", "aggiornamento.txt",
+)
+TOP_DIRS = ("runtime", "assets", "profili")
 TIMEOUT = 20
 MAX_PACKAGE = 64 * 1024 * 1024
 
