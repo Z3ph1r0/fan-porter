@@ -1,0 +1,24 @@
+{
+  "slug": "xenoverse",
+  "nombre": "Xenoverse",
+  "autor": "Port a Nintendo Switch",
+  "titleid": null,
+  "detectar": {
+    "titulo": "Xenoverse"
+  },
+  "motor": "ruby18",
+  "estado": "por-probar",
+  "mkxp": {
+    "windowTitle": "Xenoverse",
+    "defScreenW": 512,
+    "defScreenH": 384,
+    "subImageFix": true,
+    "SESourceCount": 12
+  },
+  "shims": [],
+  "preload": [],
+  "sueltos": ["Data/Scripts"],
+  "excluir": ["Backups"],
+  "rubyLoadpath": [],
+  "notas": "Ruby 1.8, tasti Essentials, nx-ruby18 prima di nx-porter. Gli script stanno in Data/Scripts e vanno lasciati fuori dallo zip. subImageFix acceso: senza, il testo non si disegna. Il font di gioco e Barlow Condensed, gia nella cartella Fonts. FontInstaller.install non copia piu in Windows\\Fonts e non riavvia con Thread.new: su PC i messaggi uscivano vuoti e il gioco si chiudeva, sulla Switch quella copia non puo riuscire."
+}

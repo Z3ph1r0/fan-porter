@@ -1,0 +1,38 @@
+{
+  "slug": "pokemon-rejuvenation",
+  "nombre": "Pokemon Rejuvenation",
+  "autor": "RebornVerse Team",
+  "titleid": null,
+  "detectar": {
+    "titulo": "Rejuvenation"
+  },
+  "motor": "ruby31",
+  "estado": "jugable",
+  "mkxp": {
+    "windowTitle": "Pokemon Rejuvenation",
+    "defScreenW": 512,
+    "defScreenH": 384,
+    "patches": ["patch"],
+    "inputRepeatStart": 0.3,
+    "inputRepeatDelay": 0.05,
+    "bindingNames": {
+      "c": "Action",
+      "b": "Back / Menu",
+      "a": "Run",
+      "x": "Mega / Misc",
+      "y": "Use Item",
+      "z": "Quick Save",
+      "l": "Previous Page",
+      "r": "Next Page",
+      "d": "Run (hold)",
+      "e": "Speed Up",
+      "f": "Mute / Unmute"
+    }
+  },
+  "shims": ["rubygems"],
+  "preload": [],
+  "sueltos": ["Scripts", "patch"],
+  "excluir": [],
+  "rubyLoadpath": [],
+  "notas": "Verificato sulla Switch, 2026-11. Non e Pokemon Reborn: stesso ScriptLoader.rb, titolo diverso. Ruby 3, tasti Essentials, niente nx-ruby18 e niente nx-reborn. rubyLoadpath solo lib: stdlib/gems chiedono rbconfig mingw e monitor.so. Il postizo rubygems basta a Gem::Version (RTP, versione sotto 14.1). discord.so non si carica e NotImplementedError non e uno StandardError, quindi chiudeva l'avvio dentro DiscordRichPresence.rb: nx-porter risponde al require con un modulo Discord finto. Thread.new su questo motore chiude il processo (far=0x10): l'updater di rete non parte. Il nuovo gioco cerca i salvataggi degli altri capitoli nella cartella padre; nx-porter crea Save Data/.portable cosi la ricerca resta nella cartella del gioco. Lo zip supera i 2 GB e la preparazione resta a cartelle sciolte."
+}

@@ -1,0 +1,32 @@
+{
+  "slug": "relict",
+  "nombre": "Relict",
+  "autor": "Port a Nintendo Switch",
+  "titleid": null,
+  "detectar": {
+    "titulo": "Relict"
+  },
+  "motor": "ruby31",
+  "estado": "jugable",
+  "mkxp": {
+    "windowTitle": "Relict",
+    "defScreenW": 640,
+    "defScreenH": 480,
+    "bindingNames": {
+      "c": "Use",
+      "b": "Back",
+      "a": "Action",
+      "x": "JumpUp",
+      "y": "JumpDown",
+      "z": "Special",
+      "l": "(unused)",
+      "r": "(unused)"
+    }
+  },
+  "shims": [],
+  "preload": [],
+  "sueltos": [],
+  "excluir": [],
+  "rubyLoadpath": [],
+  "notas": "Verificato sulla Switch, 2026-11. Ruby 3, tasti Essentials, niente nx-ruby18. load_data del gioco e definito su Object con due argomenti (pbGetFileChar): nx-porter fa Object.prepend e legge il contenitore con File.open, non con File.binread, perche binread non vede i file dentro data.zip. Senza la posizione iniziale della mappa il gioco dice che non e stata impostata."
+}

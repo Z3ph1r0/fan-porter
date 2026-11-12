@@ -1,0 +1,24 @@
+Fan Porter 0.7.5 per Windows
+
+L'uso è gratuito. Chi usa o condivide Fan Porter cita Zephiro come creatore.
+Il motore di gioco è rgss-switch di randygil, non di Zephiro.
+
+1) Estrai TUTTO lo zip in una cartella (non aprire l'exe da dentro lo zip).
+2) Doppio clic su "Fan D Porter.exe" (il programma si chiama Fan Porter).
+3) Trascina dentro la cartella del fan game.
+
+Se la finestra non compare:
+- doppio clic su "Se non parte.bat" e leggi il messaggio (viene salvato anche in avvio-log.txt)
+- se compare un avviso d'errore, il testo e' salvato in errore.txt
+- se Windows blocca l'exe (SmartScreen): "Ulteriori informazioni" > "Esegui comunque"
+  oppure clic destro sullo zip > Proprieta' > "Sblocca" PRIMA di estrarlo.
+
+Il motore (cartella "motore") e' facoltativo: se manca, l'app lo scarica la prima volta.
+
+La lista aggiornata è nella pagina Giochi del programma. Sulla Switch di Zephiro, a novembre 2026, partono e l'inizio si gioca: Nova, Relict, Reminiscencia, Pokémon GS Vitro, Pokémon Z, Realidea System, Pokémon Añil, Pokémon Rejuvenation.
+
+Preparati, non ricontrollati su quella console: Pokémon Opalo (randygil ci è arrivato alla Ruta 1 a settembre 2026) e Pokémon Xenoverse.
+
+Su Pokémon Z, Alt è ancora il turbo del gioco (pbTurbo) dentro Input.update: quel caso non è chiuso.
+
+In gioco, la velocità è 40 fps, 45 fps o 30 fps. Il blur di movimento compare solo con un tetto già attivo.
