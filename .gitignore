@@ -1,0 +1,29 @@
+# Python embeddato accanto all'app. Non è il progetto.
+/DLLs/
+/Lib/
+/include/
+/libs/
+/tcl/
+/python.exe
+/pythonw.exe
+/python3.dll
+/python312.dll
+/python312._pth
+/vcruntime140.dll
+/vcruntime140_1.dll
+
+# Motore scaricato in locale. La release pubblica resta quella di randygil.
+/motore/
+
+__pycache__/
+*.py[cod]
+
+avvio-log.txt
+ultimo-errore.txt
+errore.txt
+
+# Licenza del Python embeddato, non di Fan Porter.
+/LICENSE.txt
+prod.keys
+**/.switch/
+*.keys

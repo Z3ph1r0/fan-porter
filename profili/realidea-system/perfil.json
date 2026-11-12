@@ -1,0 +1,20 @@
+{
+  "slug": "realidea-system",
+  "nombre": "Realidea System",
+  "autor": "Port a Nintendo Switch",
+  "titleid": null,
+  "detectar": {
+    "titulo": "Realidea"
+  },
+  "motor": "ruby18",
+  "estado": "jugable",
+  "mkxp": {
+    "windowTitle": "Realidea System"
+  },
+  "shims": [],
+  "preload": [],
+  "sueltos": [],
+  "excluir": [],
+  "rubyLoadpath": [],
+  "notas": "Verificato sulla Switch, 2026-11. Gli script sono Ruby 1.8 anche se in cartella c'e x64-msvcrt-ruby300.dll: la famiglia va forzata a ruby18, altrimenti manca nx-ruby18. Tasti RGSS. Missions sta in nx-ruby18: il tasto C che chiude il menu pausa non deve aprire anche la scheda delle missioni."
+}

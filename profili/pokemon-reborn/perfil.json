@@ -1,0 +1,35 @@
+{
+  "slug": "pokemon-reborn",
+  "nombre": "Pokémon Reborn",
+  "autor": "Reborn Team",
+  "titleid": null,
+  "detectar": {
+    "titulo": "^Pokemon Reborn$",
+    "ficheros": [
+      "Scripts/ScriptLoader.rb"
+    ]
+  },
+  "motor": "ruby31",
+  "estado": "jugable",
+  "mkxp": {},
+  "shims": [
+    "discord",
+    "poke-api-v2",
+    "rubygems"
+  ],
+  "preload": [
+    "nx-reborn.rb"
+  ],
+  "sueltos": [
+    "Scripts",
+    "patch",
+    "stdlib",
+    "gems"
+  ],
+  "excluir": [],
+  "rubyLoadpath": [
+    "stdlib",
+    "gems"
+  ],
+  "notas": "Solo Pokemon Reborn, titolo esatto. Rejuvenation ha Scripts/ScriptLoader.rb ma e un altro gioco: profilo pokemon-rejuvenation, senza nx-reborn e senza rubyLoadpath su stdlib. Probado en el emulador el 2026-09-09 y JUGABLE: titulo, introduccion, el nombre en la rejilla, el viaje en tren, Lower Peridot Ward con el jugador andando, el menu de pausa y partida guardada (Game.rxdata, 377 KB). El motor esta listo en 4,7 s, los 193 scripts tardan 85 s mas y el primer mapa jugable llega a los 8,6 minutos de introduccion. HIZO FALTA UN POSTIZO POR CADA COSA QUE SU mkxp-z -el de Splendide Imaginarius- tiene y el de serie no: System.file_exist? (lo usa RTP para resolver CADA imagen), Input::D/E/F (once botones en bindingNames; se definen fuera del mapa de botones para que contesten false siempre), TilemapUtils.updateAutoTiles (se llama en cada fotograma del mapa) y Audio.se_play_position (por ahi pasa TODO efecto de sonido). Mas discord.rb y poke-api-v2.rb, que el censo ya anticipaba, y un rubygems.rb postizo con solo Gem::Version: el RubyGems que trae en stdlib/ pide rbconfig -que solo esta en su carpeta de mingw32- y monitor.so, que es una extension nativa que este interprete no lleva. Su teclado NO lo arregla el shim generico: Essentials v19 tiene una sola clase de entrada de texto y decide dentro con $Settings.useKeyboard?, asi que se redefine el metodo. La clave patches SI la entiende este motor ([boot] 10a- parche montado: patch), aunque System.file_exist? postizo no mira la superposicion. Menu de pausa con la tecla X (Input::B) y Save a dos ABAJO. Queda un combate por probar. Detalle: docs/pruebas/pokemon-reborn.md."
+}

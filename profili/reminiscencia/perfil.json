@@ -1,0 +1,33 @@
+{
+  "slug": "reminiscencia",
+  "nombre": "Reminiscencia",
+  "autor": "Port a Nintendo Switch",
+  "titleid": null,
+  "detectar": {
+    "titulo": "Reminiscen"
+  },
+  "motor": "ruby31",
+  "estado": "jugable",
+  "mkxp": {
+    "windowTitle": "Pokemon Reminiscencia",
+    "defScreenW": 640,
+    "defScreenH": 480,
+    "enableBlitting": true,
+    "bindingNames": {
+      "c": "Use",
+      "b": "Back",
+      "a": "Action",
+      "x": "JumpUp",
+      "y": "JumpDown",
+      "z": "Special",
+      "l": "(unused)",
+      "r": "(unused)"
+    }
+  },
+  "shims": [],
+  "preload": [],
+  "sueltos": [],
+  "excluir": [],
+  "rubyLoadpath": [],
+  "notas": "Verificato sulla Switch, 2026-11. Ruby 3 anche se in cartella c'e ancora RGSS102: la DLL Ruby 3 vince, e nx-ruby18 non va precaricato. Tasti Essentials. Nel titolo non mettere la e accentata: uchardet chiude l'avvio su un mkxp.json corto. Win32API.new a quattro argomenti, Marshal su StringInput (StringIO) e i PNG letti con Marshal.neverload stanno in nx-porter. neverload vale per una sola lettura e poi si spegne, tranne PluginScripts.rxdata che deve restare un array."
+}

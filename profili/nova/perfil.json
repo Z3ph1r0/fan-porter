@@ -1,0 +1,23 @@
+{
+  "slug": "nova",
+  "nombre": "Nova",
+  "autor": "Port a Nintendo Switch",
+  "titleid": null,
+  "detectar": {
+    "titulo": "^Nova$"
+  },
+  "motor": "ruby31",
+  "estado": "jugable",
+  "mkxp": {
+    "windowTitle": "Pokemon Nova",
+    "defScreenW": 960,
+    "defScreenH": 540,
+    "fontSub": ["Arial>Liberation Sans"]
+  },
+  "shims": [],
+  "preload": [],
+  "sueltos": [],
+  "excluir": [],
+  "rubyLoadpath": [],
+  "notas": "Verificato sulla Switch, 2026-11. Ruby 3, tasti Essentials. Non precaricare nx-ruby18: riscrive i comandi 1.8 e chiude l'avvio. Se la cartella vergine ha preload.rb, il porter lo mette prima di nx-porter. nx-porter e sempre l'ultimo."
+}

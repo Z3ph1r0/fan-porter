@@ -1,0 +1,21 @@
+{
+  "slug": "pokemon-gs-vitro",
+  "nombre": "Pokemon GS Vitro",
+  "autor": "Port a Nintendo Switch",
+  "titleid": null,
+  "detectar": {
+    "titulo": "GS\\s*Vitro|\\bVitro\\b"
+  },
+  "motor": "ruby18",
+  "estado": "jugable",
+  "mkxp": {
+    "windowTitle": "Pokemon GS Vitro",
+    "subImageFix": true
+  },
+  "shims": [],
+  "preload": [],
+  "sueltos": [],
+  "excluir": [],
+  "rubyLoadpath": [],
+  "notas": "Verificato sulla Switch, 2026-11. Ruby 1.8, solo RGSS102, niente DLL Ruby 3. Tasti Essentials. nx-ruby18 va in preload subito prima di nx-porter (lettere, StringInput). Non sostituire a mano l'nx-ruby18 di una cartella gia giocata."
+}
