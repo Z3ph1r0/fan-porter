@@ -8,7 +8,7 @@ The console engine is not Zephiro's. It is [rgss-switch](https://github.com/rand
 
 The fan games are not included. They stay with their authors. Fan Porter is not made by Nintendo or The Pokémon Company. There is no warranty.
 
-This file is the note for a future public repository. The repository is not published yet.
+The Windows download is the release asset `Fan-Porter-0.7.5-windows.zip` on GitHub. Extract the whole zip and start `Fan D Porter.exe`. A later update replaces the program files from `fdp-aggiornamento.zip`; it leaves Python, the engine, the games and the settings in place. The build number is `versione.txt`.
 
 ## Giochi che partono
 
