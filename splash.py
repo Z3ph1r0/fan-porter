@@ -1,5 +1,7 @@
-"""Schermata di caricamento italiana, al posto di CARGANDO.
+"""Schermata di caricamento al posto di CARGANDO.
 
+Logo Fan Porter al centro, sotto «made by zephiro for you», e
+CARICAMENTO o LOADING secondo la lingua scelta nel porter.
 L'immagine è dentro il .nro (nx_espera). Stessa dimensione in byte, così
 il motore la decodifica senza essere ricompilato.
 """
@@ -11,8 +13,8 @@ import zlib
 from pathlib import Path
 
 PNG_LEN = 21405
-APP_VERSION = "0.7.5"
-CREDIT = "made by Zephiro"
+APP_VERSION = "0.7.6"
+CREDIT = "made by zephiro for you"
 
 
 def _chunk(tag: bytes, data: bytes) -> bytes:
@@ -84,54 +86,52 @@ def _center(draw, text: str, y: int, size: int, color, bold: bool, canvas: int =
     draw.text(((canvas - width) / 2, y), text, font=font, fill=color)
 
 
+def _tint(logo, color: tuple[int, int, int, int]):
+    mark = logo.convert("RGBA")
+    pixels = mark.load()
+    for y in range(mark.height):
+        for x in range(mark.width):
+            _, _, _, alpha = pixels[x, y]
+            pixels[x, y] = (*color[:3], alpha)
+    return mark
+
+
+def _paste_center(image, logo, y: int) -> None:
+    image.paste(logo, ((image.width - logo.width) // 2, y), logo)
+
+
 def render_loading_png(title: str, icon=None, app_version: str = APP_VERSION, lang: str = "en") -> bytes:
     from PIL import Image, ImageDraw
+    del icon, app_version
     image = Image.new("RGBA", (640, 400), (10, 20, 40, 255))
     draw = ImageDraw.Draw(image)
-    brand = _font(28, True)
-    mark_path = Path(__file__).resolve().parent / "assets" / "logo-mark.png"
-    brand_x = 28
+    assets = Path(__file__).resolve().parent / "assets"
+    mark_path = assets / "logo-mark.png"
+    line_path = assets / "logo-line.png"
+    cursor = 78
     if mark_path.is_file():
-        try:
-            logo = Image.open(mark_path).convert("RGBA")
-            mh = 32
-            mw = max(int(logo.width * mh / max(logo.height, 1)), 1)
-            logo = logo.resize((mw, mh), Image.Resampling.LANCZOS)
-            pixels = logo.load()
-            tint = (120, 198, 255, 255)
-            for y in range(mh):
-                for x in range(mw):
-                    _, _, _, a = pixels[x, y]
-                    pixels[x, y] = (*tint[:3], a)
-            image.paste(logo, (28, 16), logo)
-            brand_x = 28 + mw + 10
-        except Exception:
-            brand_x = 28
-    draw.text((brand_x, 18), "FAN PORTER", font=brand, fill=(234, 241, 255, 255))
-    draw.text((28, 54), CREDIT, font=_font(16, False), fill=(143, 163, 199, 255))
-    draw.text((28, 76), app_version, font=_font(15, False), fill=(63, 169, 255, 255))
-
-    mark = icon.convert("RGBA") if icon is not None else None
-    if mark is not None:
-        side = 112
-        mark = mark.resize((side, side), Image.Resampling.LANCZOS)
-        image.paste(mark, ((640 - side) // 2, 112), mark)
-        name_y, load_y = 236, 282
-    else:
-        name_y, load_y = 150, 204
-    _center(draw, title or "Fan game", name_y, 32, (234, 241, 255, 255), True)
+        logo = Image.open(mark_path)
+        side = 108
+        logo = logo.resize((side, side), Image.Resampling.LANCZOS)
+        logo = _tint(logo, (197, 228, 255, 255))
+        _paste_center(image, logo, cursor)
+        cursor += side + 16
+    if line_path.is_file():
+        line = Image.open(line_path)
+        width = 280
+        height = max(int(line.height * width / max(line.width, 1)), 1)
+        line = line.resize((width, height), Image.Resampling.LANCZOS)
+        line = _tint(line, (234, 241, 255, 255))
+        _paste_center(image, line, cursor)
+        cursor += height + 14
+    _center(draw, CREDIT, cursor, 18, (143, 163, 199, 255), False)
     loading = "CARICAMENTO" if lang == "it" else "LOADING"
-    _center(draw, loading, load_y, 36, (234, 241, 255, 255), True)
-    _center(draw, "−  menu     +  turbo", 352, 16, (143, 163, 199, 255), False)
-
+    _center(draw, loading, cursor + 36, 28, (234, 241, 255, 255), True)
+    if title:
+        _center(draw, title, 360, 16, (143, 163, 199, 255), False)
     raw = _png_bytes(image)
-    if len(raw) > PNG_LEN and mark is not None:
-        smaller = mark.resize((72, 72), Image.Resampling.LANCZOS)
-        image.paste(Image.new("RGBA", (112, 112), (10, 20, 40, 255)), ((640 - 112) // 2, 112))
-        image.paste(smaller, ((640 - 72) // 2, 132), smaller)
-        raw = _png_bytes(image)
     if len(raw) > PNG_LEN:
-        flat = image.convert("P", palette=Image.Palette.ADAPTIVE, colors=48).convert("RGBA")
+        flat = image.convert("P", palette=Image.Palette.ADAPTIVE, colors=32).convert("RGBA")
         raw = _png_bytes(flat)
     return fit_png(raw, PNG_LEN)
 

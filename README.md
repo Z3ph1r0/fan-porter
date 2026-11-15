@@ -1,6 +1,8 @@
 # Fan Porter
 
-Fan Porter 0.7.5 è una base di progetto che ho scritto in vibe coding. Sono Zephiro. Ci metti un fan game per PC (RPG Maker XP / Pokémon Essentials) e ottieni la cartella per una Switch con Atmosphere: `sdmc:/switch/<slug>/`.
+Scarica lo zip della release, non il codice di questo repository. Lo zip si chiama `Fan-Porter-0.7.6-windows.zip`. Estrailo tutto e avvia `Fan D Porter.exe`. Qui accanto all'exe non c'è Python: se lo avvii da una copia del codice, il programma dice di scaricare la release.
+
+Fan Porter 0.7.6 è una base di progetto che ho scritto in vibe coding. Sono Zephiro. Ci metti un fan game per PC (RPG Maker XP / Pokémon Essentials) e ottieni la cartella per una Switch con Atmosphere: `sdmc:/switch/<slug>/`.
 
 L'uso è gratuito. Se lo usi, lo modifichi o lo condividi, citami. Le stesse condizioni sono in `LICENZA.txt`.
 
@@ -8,42 +10,13 @@ Il motore sulla console non l'ho scritto io. È [rgss-switch](https://github.com
 
 I fan game non sono inclusi. Restano dei loro autori. Fan Porter non è di Nintendo né di The Pokémon Company. Non c'è garanzia.
 
-The Windows download is the release asset `Fan-Porter-0.7.5-windows.zip` on GitHub. Extract the whole zip and start `Fan D Porter.exe`. A later update replaces the program files from `fdp-aggiornamento.zip`; it leaves Python, the engine, the games and the settings in place. The build number is `versione.txt`.
+Un aggiornamento successivo sostituisce i file del programma con `fdp-aggiornamento.zip`. Python, il motore, i giochi e le impostazioni restano dove sono. Il numero di build è `versione.txt`.
 
-## Giochi che partono
-
-Li ho giocati sulla Switch a novembre 2026. Partono, e l'inizio si gioca:
-
-- Nova
-- Relict
-- Reminiscencia
-- Pokémon GS Vitro
-- Pokémon Z
-- Realidea System
-- Pokémon Añil
-- Pokémon Rejuvenation
-
-Preparati, non li ho ricontrollati sulla mia console:
-
-- Pokémon Opalo. L'autore del motore ci ha giocato su una Switch vera fino alla Ruta 1, a settembre 2026.
-- Pokémon Xenoverse. Preparato. Su PC l'installatore dei font non copia più in Windows e non riavvia il gioco. Sulla Switch non è ancora stato giocato.
-
-Profili arrivati col motore, non li ho controllati io: Pokémon Reborn, Iberia, Titan e Vanguard (note sull'emulatore dell'autore del motore, settembre 2026). Reborn non è Rejuvenation. Uranium parte e si ferma prima della prima mappa giocabile. Sono piste, non una promessa.
-
-La stessa lista è nella pagina Giochi del programma.
+La lista dei giochi e il modo per aggiungerne uno sono in [GIOCHI.md](GIOCHI.md).
 
 ## Per chi vuole modificarlo
 
 Il programma è Python e tkinter. I file da leggere sono `app.py`, `ui.py`, `i18n.py`, `engine.py`, `icona.py`, `splash.py`, `runtime/` e `profili/`.
-
-Un gioco noto è una cartella `profili/<slug>/perfil.json`:
-
-- `detectar.titulo` è la regex sul titolo di Game.ini. Un file in comune non basta: Rejuvenation e Reborn condividono `ScriptLoader.rb` e sono due profili.
-- `motor` è `ruby31` o `ruby18`.
-- `mkxp` è lo schermo, i tasti e le patch scritte in `mkxp.json`.
-- `shims`, `preload`, `sueltos`, `excluir` dicono cosa copiare e cosa lasciare fuori dallo zip.
-
-Famiglia e schema tasti dei titoli verificati sono fissati anche in `INPUT_PROFILES`, dentro `engine.py`. Una DLL Ruby 3 e `RGSS102` possono stare nella stessa cartella: senza quella lista il rilevamento sbaglierebbe. Per un gioco nuovo si copia il profilo più vicino, si cambia la regex del titolo, e si aggiunge una riga lì solo se la famiglia va forzata.
 
 `runtime/nx-porter.rb` è lo shim copiato per ultimo in `lib/`. `runtime/nx-ruby18.rb` entra solo per Ruby 1.8. I giochi Ruby 3 non lo precaricano.
 

@@ -574,6 +574,7 @@ module FanPorter
 
   FPS = [
     ["auto", "as_it_is"],
+    ["libero", "fps_free"],
     ["45", "fps_45"],
     ["30", "fps_30"],
   ].freeze
@@ -587,7 +588,7 @@ module FanPorter
       "filter" => "Filter", "aspect" => "Aspect", "free" => "Free", "fixed" => "Fixed",
       "speed" => "Speed", "back" => "Back", "borders" => "Integer scale on handheld can leave borders",
       "sharp" => "Sharp pixels", "fill" => "Sharp, fill", "smooth" => "Smooth", "lanczos" => "Lanczos",
-      "as_it_is" => "40 fps", "fps_45" => "45 fps", "fps_30" => "30 fps",
+      "as_it_is" => "40 fps", "fps_free" => "Uncapped", "fps_45" => "45 fps", "fps_30" => "30 fps",
       "blur" => "Motion blur",
       "blur_note" => "Mixes the previous frame. It shows once the cap is already running",
       "accetta" => "Confirm", "indietro" => "Back", "corsa" => "Run",
@@ -623,7 +624,7 @@ module FanPorter
       "filter" => "Filtro", "aspect" => "Proporzioni", "free" => "Libere", "fixed" => "Fisse",
       "speed" => "Velocità", "back" => "Indietro", "borders" => "In portatile la scala intera può lasciare bordi",
       "sharp" => "Pixel nitidi", "fill" => "Nitidi, riempi", "smooth" => "Morbido", "lanczos" => "Lanczos",
-      "as_it_is" => "40 fps", "fps_45" => "45 fps", "fps_30" => "30 fps",
+      "as_it_is" => "40 fps", "fps_free" => "Senza tetto", "fps_45" => "45 fps", "fps_30" => "30 fps",
       "blur" => "Blur di movimento",
       "blur_note" => "Mescola il fotogramma precedente. Si vede quando il tetto è già attivo",
       "accetta" => "Conferma", "indietro" => "Indietro", "corsa" => "Corsa",
@@ -1719,6 +1720,7 @@ module FanPorter
   end
 
   def fps_choice
+    return "libero" if @cfg["fps"] == "libero"
     %w[30 45].include?(@cfg["fps"]) ? @cfg["fps"] : "auto"
   end
 
@@ -1736,6 +1738,7 @@ module FanPorter
   end
 
   def pace
+    return if fps_choice == "libero"
     now = Process.clock_gettime(Process::CLOCK_MONOTONIC)
     @pace_next ||= now
     @pace_next += 1.0 / pace_target
@@ -2043,7 +2046,7 @@ module FanPorter
       bitmap.fill_rect(0, 0, width, height, ui_color(:sky))
       title = @cfg["titolo"] || "Fan Porter"
       draw_in(bitmap, ox, box, 16, "FAN PORTER", ui_color(:ink))
-      draw_in(bitmap, ox, box, 18 + line, "0.7.5 · Zephiro", ui_color(:accent))
+      draw_in(bitmap, ox, box, 18 + line, "0.7.6 · Zephiro", ui_color(:accent))
       draw_in(bitmap, ox, box, 22 + line * 2, title, ui_color(:ink))
       draw_in(bitmap, ox, box, 26 + line * 3, section, ui_color(:muted))
       top = 36 + line * 4

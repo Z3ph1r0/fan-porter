@@ -10,6 +10,7 @@
     ]
   },
   "motor": "rgss1",
+  "ritmo": "libero",
   "estado": "arranca",
   "mkxp": {
     "execName": "Uranium"

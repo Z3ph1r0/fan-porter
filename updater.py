@@ -34,6 +34,7 @@ TOP_FILES = (
     "updater.py", BUILD_FILE, "Fan D Porter.exe", "LEGGIMI.txt", "README.md",
     "LICENZA.txt", "LICENZA-MOTORE.txt", "LICENZE-MOTORE.md", "Se non parte.bat",
     "fan-d-porter.ico", "fan-porter.ico", "fan-porter.png", "aggiornamento.txt",
+    "GIOCHI.md",
 )
 TOP_DIRS = ("runtime", "assets", "profili")
 TIMEOUT = 20

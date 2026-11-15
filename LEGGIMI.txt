@@ -1,11 +1,14 @@
-Fan Porter 0.7.5 per Windows
+Fan Porter 0.7.6 per Windows
 
-L'uso è gratuito. Chi usa o condivide Fan Porter cita Zephiro come creatore.
-Il motore di gioco è rgss-switch di randygil, non di Zephiro.
+Sono Zephiro. L'uso è gratuito: se lo usi o lo condividi, citami.
+Il motore di gioco è rgss-switch di randygil, non l'ho scritto io.
 
 1) Estrai TUTTO lo zip in una cartella (non aprire l'exe da dentro lo zip).
-2) Doppio clic su "Fan D Porter.exe" (il programma si chiama Fan Porter).
+2) Doppio clic su "Fan D Porter.exe".
 3) Trascina dentro la cartella del fan game.
+
+Se hai scaricato il codice da GitHub e non questo zip, l'exe non trova Python.
+Scarica lo zip della release, estrailo tutto e avvia l'exe da quella cartella.
 
 Se la finestra non compare:
 - doppio clic su "Se non parte.bat" e leggi il messaggio (viene salvato anche in avvio-log.txt)
@@ -15,10 +18,6 @@ Se la finestra non compare:
 
 Il motore (cartella "motore") e' facoltativo: se manca, l'app lo scarica la prima volta.
 
-La lista aggiornata è nella pagina Giochi del programma. Sulla Switch di Zephiro, a novembre 2026, partono e l'inizio si gioca: Nova, Relict, Reminiscencia, Pokémon GS Vitro, Pokémon Z, Realidea System, Pokémon Añil, Pokémon Rejuvenation.
+Quali giochi ho visto partire, e come se ne aggiunge uno, sta su GitHub in GIOCHI.md.
 
-Preparati, non ricontrollati su quella console: Pokémon Opalo (randygil ci è arrivato alla Ruta 1 a settembre 2026) e Pokémon Xenoverse.
-
-Su Pokémon Z, Alt è ancora il turbo del gioco (pbTurbo) dentro Input.update: quel caso non è chiuso.
-
-In gioco, la velocità è 40 fps, 45 fps o 30 fps. Il blur di movimento compare solo con un tetto già attivo.
+In gioco i titoli leggeri stanno a 40 fps. Quelli pesanti (Rejuvenation, Xenoverse, Reborn, Uranium) restano senza tetto. Dal menu del gioco si può ancora scegliere 40, 45 o 30. Il blur di movimento compare solo con un tetto già attivo.

@@ -1,0 +1,23 @@
+{
+  "slug": "esempio",
+  "nombre": "Esempio",
+  "autor": "",
+  "titleid": null,
+  "detectar": {
+    "titulo": "^Fan Porter esempio$"
+  },
+  "motor": "ruby31",
+  "ritmo": "40",
+  "estado": "esempio",
+  "mkxp": {
+    "windowTitle": "Esempio",
+    "defScreenW": 512,
+    "defScreenH": 384
+  },
+  "shims": [],
+  "preload": [],
+  "sueltos": [],
+  "excluir": [],
+  "rubyLoadpath": [],
+  "notas": "Non e un gioco. Si copia questa cartella, si cambiano slug, titulo e motor. ritmo 40 per un gioco leggero, libero per uno che gia sta intorno ai 30 fps. Se la famiglia va forzata, una riga in INPUT_PROFILES dentro engine.py. Il titolo di esempio non combacia con nessun fan game."
+}

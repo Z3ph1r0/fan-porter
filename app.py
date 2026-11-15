@@ -234,6 +234,39 @@ def run_gui() -> None:
     root.geometry("1120x860")
     root.minsize(860, 560)
     stored, stored_note = load_settings()
+    if stored.get("lingua") not in ("en", "it"):
+        picked = {"code": ""}
+
+        def choose_lang(code: str) -> None:
+            picked["code"] = code
+            ask.destroy()
+
+        root.withdraw()
+        ask = tk.Toplevel(root)
+        ask.title("Fan Porter")
+        ask.resizable(False, False)
+        ask.configure(bg="#101820")
+        tk.Label(
+            ask, text="Language    ·    Lingua", bg="#101820", fg="#f4f7fb",
+            font=("Segoe UI", 16),
+        ).pack(padx=28, pady=(22, 14))
+        row = tk.Frame(ask, bg="#101820")
+        row.pack(padx=28, pady=(0, 22))
+        for code, label in (("en", "English"), ("it", "Italiano")):
+            tk.Button(
+                row, text=label, width=14, command=lambda value=code: choose_lang(value),
+                bg="#1c2a3a", fg="#f4f7fb", activebackground="#2f6fed",
+                activeforeground="#ffffff", relief="flat", padx=8, pady=8,
+            ).pack(side="left", padx=6)
+        ask.protocol("WM_DELETE_WINDOW", ask.destroy)
+        ask.update_idletasks()
+        ask.geometry(f"+{root.winfo_screenwidth() // 2 - ask.winfo_width() // 2}+{root.winfo_screenheight() // 2 - ask.winfo_height() // 2}")
+        ask.grab_set()
+        root.wait_window(ask)
+        root.deiconify()
+        if picked["code"] in ("en", "it"):
+            stored["lingua"] = picked["code"]
+            save_settings(stored)
     lingua = stored.get("lingua") if stored.get("lingua") in ("en", "it") else "en"
     output_var = tk.StringVar(value=stored.get("uscita") or str(default_output_dir()))
     if stored.get("finestra"):

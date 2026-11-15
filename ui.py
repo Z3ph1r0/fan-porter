@@ -562,7 +562,6 @@ PAGES = (
     ("graphics", "graphics_title"),
     ("buttons", "buttons_title"),
     ("saves", "saves_title"),
-    ("games", "games_title"),
     ("advanced", "advanced_title"),
 )
 
@@ -630,8 +629,6 @@ def mount(root: tk.Misc, state: dict, output_var, actions: dict) -> dict:
     brand.pack(anchor="w")
     meta = tk.Frame(top, bg=SIDE)
     meta.pack(fill="x", pady=(4, 10))
-    byline = tk.Label(meta, text="", bg=SIDE, fg=MUTED, font=(family, 11))
-    byline.pack(side="left")
     lang = ttk.Combobox(meta, width=11, state="readonly", values=("English", "Italiano"))
     lang.pack(side="right")
 
@@ -728,12 +725,10 @@ def mount(root: tk.Misc, state: dict, output_var, actions: dict) -> dict:
     buttons_page = tk.Frame(inner, bg=BG)
     graphics_page = tk.Frame(inner, bg=BG)
     saves_page = tk.Frame(inner, bg=BG)
-    games_page = tk.Frame(inner, bg=BG)
     advanced_page = tk.Frame(inner, bg=BG)
     pages["buttons"] = buttons_page
     pages["graphics"] = graphics_page
     pages["saves"] = saves_page
-    pages["games"] = games_page
     pages["advanced"] = advanced_page
 
     buttons_title = heading(buttons_page)
@@ -949,25 +944,6 @@ def mount(root: tk.Misc, state: dict, output_var, actions: dict) -> dict:
     saves_note = note(saves_page)
     saves_note.pack_configure(pady=(6, 0))
 
-    games_title = heading(games_page)
-    games_lead = note(games_page)
-    games_lead.pack_configure(pady=(0, 2))
-    games_blocks = []
-
-    def games_block(title_key: str, body_key: str) -> None:
-        title = tk.Label(
-            games_page, text="", bg=BG, fg=INK, font=(strong, 15),
-            anchor="w", justify="left",
-        )
-        title.pack(anchor="w", pady=(16, 4))
-        body = note(games_page)
-        games_blocks.append((title, title_key, body, body_key))
-
-    games_block("games_on_title", "games_on")
-    games_block("games_ready_title", "games_ready")
-    games_block("games_other_title", "games_other")
-    games_block("games_edit_title", "games_edit")
-
     adv_title = heading(advanced_page)
     family_label = tk.Label(advanced_page, text="", bg=BG, fg=INK, font=(family, 13))
     family_label.pack(anchor="w")
@@ -987,11 +963,9 @@ def mount(root: tk.Misc, state: dict, output_var, actions: dict) -> dict:
     nsp = ChromeButton(advanced_page, actions["nsp"], outer=BG, stretch=False)
     check = ChromeButton(advanced_page, actions["check"], outer=BG, stretch=False)
     check.pack(anchor="w", pady=3)
-    credit_note = tk.Label(advanced_page, text="", bg=BG, fg=MUTED, font=(family, 11), wraplength=640, justify="left")
-    credit_note.pack(anchor="w", pady=(8, 0))
     keys_note = tk.Label(advanced_page, text="", bg=BG, fg=MUTED, font=(family, 11), wraplength=640, justify="left")
-    keys_note.pack(anchor="w", pady=(2, 0))
-    wrapping.extend((credit_note, keys_note))
+    keys_note.pack(anchor="w", pady=(8, 0))
+    wrapping.append(keys_note)
 
     tk.Frame(bottom, bg=LINE, height=1).pack(fill="x", pady=(12, 10))
     card = tk.Frame(bottom, bg=CARD, highlightthickness=0)
@@ -1043,8 +1017,6 @@ def mount(root: tk.Misc, state: dict, output_var, actions: dict) -> dict:
     log.configure(state="disabled")
     status = tk.Label(bottom, text="", bg=SIDE, fg=MUTED, font=(family, 11), wraplength=312, justify="left")
     status.pack(anchor="w", pady=(8, 0))
-    disclaimer = tk.Label(bottom, text="", bg=SIDE, fg=MUTED, font=(family, 10), wraplength=312, justify="left")
-    disclaimer.pack(anchor="w", pady=(4, 0))
 
     def say(key: str) -> str:
         return tr(state["lingua"], key)
@@ -1054,7 +1026,6 @@ def mount(root: tk.Misc, state: dict, output_var, actions: dict) -> dict:
         for key, i18n_key in PAGES:
             nav_bits[key].configure(text=say(i18n_key))
         paint_nav()
-        byline.configure(text=say("byline"))
         info = state.get("info")
         if info is None:
             game_name.configure(text=state.get("title") or say("drop_here"))
@@ -1099,11 +1070,6 @@ def mount(root: tk.Misc, state: dict, output_var, actions: dict) -> dict:
             button.configure(text=say(key))
         slug = info.slug if info else "game-name"
         saves_note.configure(text=say("saves_stay").format(slug=slug))
-        games_title.configure(text=say("games_title"))
-        games_lead.configure(text=say("games_lead"))
-        for title, title_key, body, body_key in games_blocks:
-            title.configure(text=say(title_key))
-            body.configure(text=say(body_key))
         adv_title.configure(text=say("advanced_title"))
         family_label.configure(text=say("family"))
         family_box.configure(values=[say(key) for _code, key in FAMILIES])
@@ -1117,7 +1083,6 @@ def mount(root: tk.Misc, state: dict, output_var, actions: dict) -> dict:
         elif nsp.winfo_ismapped():
             nsp.pack_forget()
         check.configure(text=say("check_engine"))
-        credit_note.configure(text=say("credit"))
         keys_note.configure(text=say("no_keys"))
         ready = state.get("info") is not None and not state.get("busy")
         prepare.configure(text=actions["prepare_label"](), state="normal" if ready else "disabled")
@@ -1135,7 +1100,6 @@ def mount(root: tk.Misc, state: dict, output_var, actions: dict) -> dict:
                 work.pack_forget()
             work_bar["value"] = 0
             status.configure(text=say("footer"))
-        disclaimer.configure(text=say("buttons_help"))
 
     def load_controls(cfg: dict) -> None:
         loading["on"] = True

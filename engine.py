@@ -43,7 +43,7 @@ GAME_JSON_KEYS = {
 FALLBACK_SHIMS = ("nx-compat.rb", "nx-teclado.rb", "nx-rutas.rb")
 RGSSAD_KEY = bytes((0x52, 0x47, 0x53, 0x53, 0x41, 0x44, 0x00, 0x01))
 PORT_AUTHOR = "Zephiro"
-APP_VERSION = "0.7.5"
+APP_VERSION = "0.7.6"
 MOTOR_VERSION = "0.2.4"
 # rgss-switch 0.2.4 mounts this exact filename. We rewrite that string to data.zip.
 MOTOR_ARCHIVE = b"datos.zip"
@@ -1480,7 +1480,7 @@ def write_porter_cfg(
         "volume=100",
         f"scala={scala if scala in GRAFICA else 'intera'}",
         f"proporzioni={proporzioni}",
-        "fps=auto",
+        f"fps={'libero' if str((info.profile or {}).get('ritmo') or '') == 'libero' else 'auto'}",
         f"lingua={lingua if lingua in ('en', 'it') else 'en'}",
         "accetta=C",
         "indietro=B",

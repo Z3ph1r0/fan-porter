@@ -10,6 +10,7 @@
     ]
   },
   "motor": "ruby31",
+  "ritmo": "libero",
   "estado": "jugable",
   "mkxp": {},
   "shims": [
