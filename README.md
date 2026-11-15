@@ -2,13 +2,13 @@
 
 Scarica lo zip della release, non il codice di questo repository. Lo zip si chiama `Fan-Porter-0.7.6-windows.zip`. Estrailo tutto e avvia `Fan D Porter.exe`. Qui accanto all'exe non c'è Python: se lo avvii da una copia del codice, il programma dice di scaricare la release.
 
-Fan Porter 0.7.6 è una base di progetto che ho scritto in vibe coding. Sono Zephiro. Ci metti un fan game per PC (RPG Maker XP / Pokémon Essentials) e ottieni la cartella per una Switch con Atmosphere: `sdmc:/switch/<slug>/`.
+Fan Porter 0.7.6 è una base di progetto che ho scritto in vibe coding. Ci metti un fan game per PC (RPG Maker XP / Pokémon Essentials) e ottieni la cartella per una Switch con Atmosphere: `sdmc:/switch/<slug>/`.
 
 L'uso è gratuito. Se lo usi, lo modifichi o lo condividi, citami. Le stesse condizioni sono in `LICENZA.txt`.
 
 Il motore sulla console non l'ho scritto io. È [rgss-switch](https://github.com/randygil/rgss-switch) 0.2.4 di randygil, GPL-2.0+ (`LICENZA-MOTORE.txt`), sopra mkxp-z e CRuby. Non lo ricompilo. Scarico lo zip che ha pubblicato lui, poi aggiungo gli shim Ruby e un profilo per gioco.
 
-I fan game non sono inclusi. Restano dei loro autori. Fan Porter non è di Nintendo né di The Pokémon Company. Non c'è garanzia.
+I fan game non sono inclusi. Restano dei loro autori.
 
 Un aggiornamento successivo sostituisce i file del programma con `fdp-aggiornamento.zip`. Python, il motore, i giochi e le impostazioni restano dove sono. Il numero di build è `versione.txt`.
 
