@@ -534,6 +534,17 @@ module FanPorterAudio
     define_method(name) do |*args|
       FanPorterGuard.run(FanPorterAudio, Audio, name, args) do
         FanPorter.scale_audio(args)
+        next if FanPorter.keep_playing?(name, args)
+        super(*args)
+      end
+    end
+  end
+
+  [:bgm_stop, :bgs_stop, :bgm_fade, :bgs_fade].each do |name|
+    next unless Audio.respond_to?(name)
+    define_method(name) do |*args|
+      FanPorterGuard.run(FanPorterAudio, Audio, name, args) do
+        FanPorter.forget_audio(name)
         super(*args)
       end
     end
@@ -695,7 +706,7 @@ module FanPorter
     grab_raw_input
     alias_engine_input
     FanPorterGuard.capture(Input, :update, :press?, :trigger?, :repeat?, :pressex?, :triggerex?, :repeatex?, :releaseex?, :dir4, :dir8)
-    FanPorterGuard.capture(Audio, :bgm_play, :bgs_play, :me_play, :se_play)
+    FanPorterGuard.capture(Audio, :bgm_play, :bgs_play, :me_play, :se_play, :bgm_stop, :bgs_stop, :bgm_fade, :bgs_fade)
     class << Input
       prepend FanPorterKeys
       prepend FanPorterExtra
@@ -988,6 +999,39 @@ module FanPorter
   def raw_code(key)
     return key if @passthrough
     @map[key] || key
+  end
+
+  # Una porta richiama bgm_play con lo stesso file e la posizione a zero.
+  # Il motore riparte da capo. Se il brano è già in corso, lo lascio dov'è.
+  # Una posizione maggiore di zero è una ripresa voluta: quella passa.
+  def keep_playing?(name, args)
+    return false unless name == :bgm_play || name == :bgs_play
+    file = args[0].to_s
+    return false if file.empty?
+    pos = args.length >= 4 ? args[3].to_f : 0.0
+    return false if pos > 0.05
+    vol = args.length >= 2 ? args[1] : 100
+    pitch = args.length >= 3 ? args[2] : 100
+    sig = [file, vol, pitch]
+    key = name == :bgm_play ? :@bgm_sig : :@bgs_sig
+    pos_name = name == :bgm_play ? :bgm_pos : :bgs_pos
+    if instance_variable_get(key) == sig && Audio.respond_to?(pos_name)
+      begin
+        return true if Audio.send(pos_name).to_f > 0.25
+      rescue Exception
+        return false
+      end
+    end
+    instance_variable_set(key, sig)
+    false
+  end
+
+  def forget_audio(name)
+    if name == :bgm_stop || name == :bgm_fade
+      @bgm_sig = nil
+    elsif name == :bgs_stop || name == :bgs_fade
+      @bgs_sig = nil
+    end
   end
 
   def scale_audio(args)
@@ -1800,7 +1844,12 @@ module FanPorter
     patch_mkxp
     apply_live
     dispose_screen
-    raise RGSSReset if Object.const_defined?(:RGSSReset)
+    # RGSS1 (Pokémon Z, Realidea) chiama l'eccezione Reset. RGSS3 la chiama RGSSReset.
+    if Object.const_defined?(:RGSSReset)
+      raise RGSSReset
+    elsif Object.const_defined?(:Reset)
+      raise Reset
+    end
   end
 
   def leave_game
